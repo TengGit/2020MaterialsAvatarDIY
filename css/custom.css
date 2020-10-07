@@ -1,0 +1,29 @@
+.bottle-description {
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+.btn.my-picker {
+	width: 5rem;
+	height: 5rem;
+	margin: 1ex;
+	background-size: contain;
+	background-position: center;
+}
+
+.btn.my-picker.active {
+	outline: double black;
+	outline-width: thick;
+}
+
+#avatar-preview {
+	width: 256px;
+	height: 256px;
+	border: none;
+}
+
+#avatar-canvas {
+	display: none;
+}
