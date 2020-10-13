@@ -1,5 +1,5 @@
 .rainbow-bus {
-	background: linear-gradient(90deg,
+	background: linear-gradient(120deg,
 		hsl(0deg,100%,60%), hsl(30deg,100%,60%), hsl(45deg,100%,60%), hsl(60deg,100%,60%) 40%,
 		hsl(75deg,100%,60%), hsl(120deg,100%,60%), hsl(180deg,100%,60%) 70%,
 		hsl(200deg,100%,60%), hsl(240deg,100%,60%), hsl(270deg,100%,60%), hsl(300deg,100%,60%));
