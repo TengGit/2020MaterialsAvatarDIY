@@ -17,10 +17,19 @@
       <div class="row-sm text-center">
         <img id="avatar-preview" src="img/loading.jpg">
       </div>
-      <div class="row-sm">
-        <span class="col w-100">请选择喜欢的背景 ↓</span>
-      </div>
-      <div class="form-group btn-group-toggle row-cols-8" data-toggle="buttons">
+      <ul class="nav nav-tabs mt-2" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" data-toggle="tab" href="#bg-picker" role="tab">选择背景</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-toggle="tab" href="#car-picker" role="tab">选择巴士</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-toggle="tab" href="#avatar-loader" role="tab">上传头像</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+      <div class="tab-pane form-group btn-group-toggle row-cols-8 active" id="bg-picker" role="tabpanel" data-toggle="buttons">
         <label class="btn my-picker active"><input type="radio" class="set-bg" name="car-bg" value="9" checked></label>
         <label class="btn my-picker"><input type="radio" class="set-bg" name="car-bg" value="10"></label>
         <label class="btn my-picker"><input type="radio" class="set-bg" name="car-bg" value="11"></label>
@@ -48,10 +57,7 @@
         <label class="btn my-picker"><input type="radio" class="set-bg" name="car-bg" value="17"></label>
         <label class="btn my-picker"><input type="radio" class="set-bg" name="car-bg" value="18"></label>
       </div>
-      <div class="row-sm">
-        <span class="col w-100">再选择喜欢的巴士 ↓</span>
-      </div>
-      <div class="form-group btn-group-toggle row-cols-8" data-toggle="buttons">
+      <div class="tab-pane form-group btn-group-toggle row-cols-8" id="car-picker" data-toggle="buttons">
         <label class="btn my-picker active"><input type="radio" class="set-car" name="car-type" value="red" data-posinfo="[175,125,40]" checked></label>
         <label class="btn my-picker"><input type="radio" class="set-car" name="car-type" value="orange" data-posinfo="[175,125,40]"></label>
         <label class="btn my-picker"><input type="radio" class="set-car" name="car-type" value="yellow" data-posinfo="[175,125,40]"></label>
@@ -67,9 +73,10 @@
         <label class="btn my-picker"><input type="radio" class="set-car" name="car-type" value="blue2" data-posinfo="[111,50,90]"></label>
         <label class="btn my-picker"><input type="radio" class="set-car" name="car-type" value="purple2" data-posinfo="[111,50,90]"></label>
       </div>
-      <div class="form-row mb-2">
-      <button type="button" class="btn btn-primary from-control col-sm" id="select-avatar">上传我的头像！</button>
-      <input type="file" name="avatar-file" id="avatar-file" accept="image/*" style="display: none;">
+      <div class="tab-pane form-row mb-2 py-1 px-2" id="avatar-loader">
+        <button type="button" class="btn btn-primary from-control col-sm" id="select-avatar">上传我的头像！</button>
+        <input type="file" name="avatar-file" id="avatar-file" accept="image/*" style="display: none;">
+      </div>
       </div>
       </form>
     </div>
