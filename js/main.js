@@ -132,5 +132,5 @@ $(function() {
 		}
 	});
 
-	window.onload = refreshAvatar;
+	refreshAvatar();
 });
