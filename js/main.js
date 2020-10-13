@@ -45,6 +45,12 @@ $(function() {
 	var BOTTOM_URL = "img/car/bg/#1.png";
 	var TOP_URL = "img/car/fg/#1.png";
 	var AVATAR_SIZE = 256;
+	var LOADED_TEST_INTERVAL = 100;
+	var unfinished = 0;
+
+	function finishOne() {
+		unfinished--;
+	}
 
 	var avatarImg = undefined;
 
@@ -52,9 +58,7 @@ $(function() {
 		return "url(#1)".replace("#1", url);
 	}
 
-	var silenceMode = false;
-
-	function refreshAvatar() {
+	function doRefreshAvatar() {
 		var canvas = $("#avatar-canvas").get(0);
 		var result = $("#avatar-preview").get(0);
 		var ctx = canvas.getContext("2d");
@@ -75,22 +79,38 @@ $(function() {
 		result.src = canvas.toDataURL();
 	}
 
+	var scheduled = null;
+	function refreshAvatar() {
+		if (unfinished === 0) {
+			if (scheduled) {
+				clearInterval(scheduled);
+				scheduled = null;
+			}
+			doRefreshAvatar();
+		} else {
+			scheduled = scheduled || setInterval(refreshAvatar, LOADED_TEST_INTERVAL);
+		}
+	}
+
 	// change "color selection" controls' background
-	$(".set-bg").each(function() {
+	unfinished += $(".set-bg").each(function() {
 		var img = document.createElement("img");
 		var src = BG_URL.replace("#1", this.value);
+		img.onload = finishOne;
 		img.src = src;
 		$(this).parent().css("background-image", URLize(src));
 		$(this).data("bg", img);
-	});
-	$(".set-car").each(function() {
+	}).length;
+	unfinished += $(".set-car").each(function() {
 		var bgImg = document.createElement("img"), fgImg = document.createElement("img");
 		var key = this.value;
+		bgImg.onload = finishOne;
+		fgImg.onload = finishOne;
 		bgImg.src = BOTTOM_URL.replace("#1", key);
 		fgImg.src = TOP_URL.replace("#1", key);
 		$(this).parent().css("background-image", URLize(PV_URL.replace("#1", key)));
 		$(this).data({"bg": bgImg, "fg": fgImg});
-	});
+	}).length * 2;
 
 	$(".btn.my-picker").on("change", function() {
 		refreshAvatar();
